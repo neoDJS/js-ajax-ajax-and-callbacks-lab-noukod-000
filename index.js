@@ -31,7 +31,7 @@ function searchRepositories(){
 function showCommits(el){
   const url = `https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`;
   $.get(url).done(function(response){
-    console.log(response);
+    // console.log(response);
     // const commits = response//JSON.parse(response);
     const src = document.getElementById('commit-template').innerHTML;
     const template = Handlebars.compile(src);
