@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+    <fieldset>
+      <input type="text" id="searchTerms">
+      <a href="#" onclick="searchRepositories()">Search Repositories</a>
+    </fieldset>
     <main id="main">
       <div id="errors"></div>
     </main>
@@ -32,7 +36,34 @@
         <div id="details"></div>
       </div>
     </div>
+    <script id="repository-template" type="text/x-handlebars-template">
+       <ul>
+        {{#each this}}
+          <li>
+            <h2><a href="{{html_url}}">{{name}}</a></h2>
+            <p>{{description}}</p>
+            {{> authorPartial owner }}
+            <a href="#" data-repository="{{name}}" data-owner="{{owner.login}}" onclick="showCommits(this)">Show Commits</a>
+          </li>
+         {{/each}}
+       </ul>
+     </script>
+     <script id="author-partial-template" type="text/x-handlebars-template">
+       <section>
+         <header><h4>Created By {{login}}</h4></header>
+         <img src="{{avatar_url}}" height="32" width="32">
+       </section>
+     </script>
+     <script id="commit-template" type="text/x-handlebars-template">
+       <h3>Commits : </h3><br>
+       <ul>
+         {{#each commits}}
+           <li>{{displayCommit this}}</li>
+         {{/each}}
+       </ul>;
+     </script>
     <script src="jquery-3.1.0.min.js"></script>
+    <script src="handlebars.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
