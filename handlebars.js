@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*!
 
  handlebars v4.0.5
@@ -4606,3 +4607,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ])
 });
 ;
+=======
+hh
+>>>>>>> 211ed2473474dfa7915671d1c0e4a7b9dde391d0
