@@ -1,13 +1,16 @@
 $(document).ready(function (){
-  Handlebars.registerPartial(
-    'authorPartial',
-    document.getElementById('author-partial-template').innerHTML
-  );
-
-  Handlebars.registerHelper('displayCommit',function(){
-    return new Handlebars.SafeString('<strong>' + this.author.login + ' ' + this.commit.author.name + '</strong> - ' + this.commit.message);
-  });
+    init();
 });
+
+function init(){
+  Handlebars.registerPartial('authorPartial', document.getElementById('author-partial-template').innerHTML);
+
+  Handlebars.registerHelper('displayCommit', function(){
+    return new Handlebars.SafeString('<strong>' + this.sha + '</strong> - ' + this.commit.message);
+  });
+}
+
+    init();
 
 function searchRepositories(){
   const searchTerms = $('#searchTerms').val()
@@ -28,11 +31,11 @@ function searchRepositories(){
 function showCommits(el){
   const url = `https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`;
   $.get(url).done(function(response){
-    // console.log(response);
-    const commits = response//JSON.parse(response);
+    console.log(response);
+    // const commits = response//JSON.parse(response);
     const src = document.getElementById('commit-template').innerHTML;
     const template = Handlebars.compile(src);
-    $('#details').html(template(commits));
+    $('#details').html(template({commits: response}));
   }).fail(error => {
     displayError();
   });

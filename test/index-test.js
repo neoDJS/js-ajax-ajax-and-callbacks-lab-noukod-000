@@ -9,6 +9,7 @@ describe('index.js', () => {
   const html = fs.readFileSync(path.resolve(__dirname, '..', 'index.html'), 'utf-8')
   const scripts = [
     path.resolve(__dirname, '..', 'index.js'),
+    path.resolve(__dirname, '..', 'handlebars.js'),
     path.resolve(__dirname, '..', 'jquery-3.1.0.min.js')
   ]
 
