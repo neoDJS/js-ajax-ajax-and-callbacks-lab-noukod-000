@@ -51,15 +51,15 @@ describe('index.js', () => {
       xhr.restore()
     })
 
-    describe('searchRepositories', () => {
-      it('calls out to the github search API and displays results', () => {
-        window.$('#searchTerms').val('tetris')
-        searchRepositories()
-        requests[0].respond(200, contentType, resultsData())
-        expect(requests[0].url).toMatch(/https:\/\/api.github.com\/search\/repositories\?q=tetris/)
-        expect(window.$('#results').html()).toMatch(/Tetris/)
-      })
-    })
+    // describe('searchRepositories', () => {
+    //   it('calls out to the github search API and displays results', () => {
+    //     window.$('#searchTerms').val('tetris')
+    //     searchRepositories()
+    //     requests[0].respond(200, contentType, resultsData())
+    //     expect(requests[0].url).toMatch(/https:\/\/api.github.com\/search\/repositories\?q=tetris/)
+    //     expect(window.$('#results').html()).toMatch(/Tetris/)
+    //   })
+    // })
 
     // describe('showCommits', () => {
     //   it('calls the github commits api and displays results', () => {
